@@ -16,14 +16,6 @@ const app = express();
 // Enable CORS
 app.use(cors());
 
-/* Start RUN front end code */
-app.use(express.static(path.join(__dirname, '../frontend/build')));
-
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
-});
-/* END RUN front end code */
-
 
 const PORT = 3000;
 
@@ -87,3 +79,19 @@ app.post('/upload', upload.single('image'), async (req, res) => {
 });
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+/* Start RUN front end code */
+const fs = require('fs');
+
+const frontendPath = path.join(__dirname, '../frontend/build/index.html');
+
+if (fs.existsSync(frontendPath)) {
+  app.use(express.static(path.join(__dirname, '../frontend/build')));
+  app.get('/*', (req, res) => {
+    res.sendFile(frontendPath);
+  });
+} else {
+  console.warn('Frontend build not found. Skipping frontend routes.');
+}
+
+/* END RUN front end code */
