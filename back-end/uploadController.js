@@ -16,6 +16,16 @@ const app = express();
 // Enable CORS
 app.use(cors());
 
+/* Start RUN front end code */
+const path = require('path');
+app.use(express.static(path.join(__dirname, '../frontend/build')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
+});
+/* END RUN front end code */
+
+
 const PORT = 3000;
 
 // Configure AWS
