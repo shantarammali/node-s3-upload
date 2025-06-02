@@ -1,0 +1,4 @@
+# Ignore env & node_modules inside any subfolder
+**/.env
+**/node_modules/
+**/package-lock.json
