@@ -83,10 +83,10 @@ app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 /* Start RUN front end code */
 const fs = require('fs');
 
-const frontendPath = path.join(__dirname, '../frontend/build/index.html');
+const frontendPath = path.join(__dirname, '../frontend/index.html');
 
 if (fs.existsSync(frontendPath)) {
-  app.use(express.static(path.join(__dirname, '../frontend/build')));
+  app.use(express.static(path.join(__dirname, '../frontend')));
   app.get('/*', (req, res) => {
     res.sendFile(frontendPath);
   });
