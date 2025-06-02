@@ -1,8 +1,9 @@
+const dotenv = require('dotenv');
+dotenv.config();
 const express = require('express');
 const cors = require('cors');
 const multer = require('multer');
 const AWS = require('aws-sdk');
-const dotenv = require('dotenv');
 const { v4: uuidv4 } = require('uuid');
 const path = require('path');
 const Upload = require('./Models/UploadSchema'); // Assuming you have a model file for the image schema
@@ -10,7 +11,6 @@ const connectDB  = require('./db'); // Assuming you have a db.js file for MongoD
 // Initialize MongoDB connection
 connectDB(); // Connect to MongoDB if needed
 
-dotenv.config();
 const app = express();
 
 // Enable CORS
