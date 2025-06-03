@@ -17,7 +17,11 @@ const app = express();
 app.use(cors());
 
 
-const PORT = 3000;
+console.log('MONGO_URI:', process.env.MONGO_URI);
+console.log('AWS_ACCESS_KEY_ID:', process.env.AWS_ACCESS_KEY_ID);
+console.log('AWS_SECRET_ACCESS_KEY:', process.env.AWS_SECRET_ACCESS_KEY);
+console.log('S3_BUCKET_NAME:', process.env.S3_BUCKET_NAME);
+const PORT = 3300;
 
 // Configure AWS
 // AWS.config.update({
